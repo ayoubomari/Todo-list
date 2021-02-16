@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <title>Homepage | Todo</title>
+
+    <!--style-->
+    <link rel="stylesheet" type="text/css" href="/css/general.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+
+</head>
+<body>
+
+    <img src="/img/logo.jpg" class="logo">
+    <div id="todo-table">
+        <form>
+            <input type="text" name="item" placeholder="Add new item..." required>
+            <button type="submit">Add Item</button>
+        </form>
+        
+        <ul>
+            <% todos.forEach((element) => { %>
+                <li><%= element.item %></li>
+            <% }) %>
+        </ul>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/todo-list.js"></script>
+</body>
+</html>
