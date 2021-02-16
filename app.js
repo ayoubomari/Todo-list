@@ -8,7 +8,7 @@ const todoController = require('./controllers/todoController');
 
 //create express server
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 5000;
 
 
 //middleware
