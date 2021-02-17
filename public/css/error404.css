@@ -24,6 +24,7 @@
 }
 
 #to-home{
+    cursor: pointer;
     font-size: 2rem;
 }
 #error-type > span{
