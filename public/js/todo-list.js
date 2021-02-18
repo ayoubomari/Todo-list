@@ -1,6 +1,6 @@
 $(document).ready(() => {
     //focus on input
-    document.querySelector('.logo').addEventListener('click', () => {location.assign('/todo')})
+    document.querySelector('.logo').addEventListener('click', () => {location.assign('/todo')});
     document.querySelector('input').focus();
 
     //for POST
