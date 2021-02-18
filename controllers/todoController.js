@@ -24,7 +24,11 @@ module.exports = (app) => {
             //get data from mongooDB and put It into the view.
             todo.find({}, (err, data) => {
                 if(err) {console.error(err);return;}
-                res.render('todo', {todos: data})
+                let decodeData = [];
+                data.forEach((element, index) => {
+                    decodeData[index] = {item: decodeURIComponent(element.item)};
+                });
+                res.render('todo', {todos: decodeData})
             })
         });
     
@@ -40,7 +44,7 @@ module.exports = (app) => {
     
         app.delete(`/${element}/:item`, (req,res) => {
             //delete the requested item from mongooDB
-            todo.find({item: req.params.item.replace(/\-/g, " ")}).remove((err, data) => {
+            todo.find({item: encodeURIComponent(req.params.item)}).remove((err, data) => {
                 if(err){throw err;}
                 res.json(data);
             });

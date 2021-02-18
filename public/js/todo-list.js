@@ -1,5 +1,6 @@
 $(document).ready(() => {
     //focus on input
+    document.querySelector('.logo').addEventListener('click', () => {location.assign('/todo')})
     document.querySelector('input').focus();
 
     //for POST
@@ -7,9 +8,9 @@ $(document).ready(() => {
         e.preventDefault()
 
         let item = $('form input');
-        let todo = {item: item.val()};
+        let todo = {item: encodeURIComponent(item.val())};
 
-        if(todo.item.search(/[?&\/\\]/) != -1){alert(`error, you can't use this characters: "&" "?" "/" "\" `);return;}
+        //if(todo.item.search(/[-?&\/\\]/) != -1){alert(`error, you can't use this characters: "&" "?" "/" "\" `);return;}
 
         $.ajax({
             type: 'POST',
@@ -27,7 +28,7 @@ $(document).ready(() => {
     //for DELETE
     $('li').on('click', function() {
         
-        let item = $(this).text().replace(/ /g, "-");
+        let item = encodeURIComponent($(this).text());
         $.ajax({
             type:"DELETE",
             url: "/todo/" + item,
